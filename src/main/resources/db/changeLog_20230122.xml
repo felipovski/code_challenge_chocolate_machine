@@ -1,0 +1,32 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog
+    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <property name="now" value="now()" dbms="postgresql"/>
+
+    <changeSet id="20230122" author="choco" >
+        <insert tableName="chocolate">
+            <column name="creationdate" valueDate="${now}"/>
+            <column name="updatedate" valueDate="${now}"/>
+            <column name="chocolatetype" value="A"/>
+            <column name="description" value="Chocolate oitenta porcento"/>
+        </insert>
+        <insert tableName="chocolate">
+            <column name="creationdate" valueDate="${now}"/>
+            <column name="updatedate" valueDate="${now}"/>
+            <column name="chocolatetype" value="B"/>
+            <column name="description" value="Chocolate oitenta e cinco porcento"/>
+        </insert>
+        <insert tableName="chocolate">
+            <column name="creationdate" valueDate="${now}"/>
+            <column name="updatedate" valueDate="${now}"/>
+            <column name="chocolatetype" value="C"/>
+            <column name="description" value="Chocolate noventa porcento"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

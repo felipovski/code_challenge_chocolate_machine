@@ -1,0 +1,58 @@
+version: '3.8'
+services:
+  postgres:
+    container_name: postgres_choco
+    image: postgres:14
+    environment:
+      POSTGRES_USER: choco
+      POSTGRES_PASSWORD: choco
+    ports:
+      - "5432:5432"
+    networks:
+      - choco-network
+  quarkus:
+    container_name: quarkus
+    depends_on:
+      - postgres
+      - jaeger
+    build:
+      context: .
+      dockerfile: ./src/main/docker/Dockerfile.jvm
+    ports:
+      - "5005:5005"
+      - "8080:8080"
+    networks:
+      - choco-network
+  jaeger:
+    container_name: jaeger_choco
+    image: jaegertracing/all-in-one:1.41.0
+    ports:
+      - "6831:6831/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "4317:4317"
+      - "4318:4318"
+      - "14250:14250"
+      - "14268:14268"
+      - "14269:14269"
+      - "9411:9411"
+    networks:
+      - choco-network
+  prometheus:
+    container_name: prometheus_choco
+    build:
+      context: .
+      dockerfile: Dockerfile.prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - choco-network
+  grafana:
+    container_name: grafana_choco
+    image: grafana/grafana:9.3.2
+    ports:
+      - "3000:3000"
+    networks:
+      - choco-network
+networks:
+  choco-network:

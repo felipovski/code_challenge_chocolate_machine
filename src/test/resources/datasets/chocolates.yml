@@ -1,0 +1,10 @@
+chocolate:
+  - ID: 123
+    DESCRIPTION: "Chocolate oitenta porcento"
+    CHOCOLATETYPE: "A"
+  - ID: 234
+    DESCRIPTION: "Chocolate oitenta e cinco porcento"
+    CHOCOLATETYPE: "B"
+  - ID: 567
+    DESCRIPTION: "Chocolate noventa porcento"
+    CHOCOLATETYPE: "C"
